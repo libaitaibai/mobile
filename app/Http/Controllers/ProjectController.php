@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-//    const rongxing = 'https://www.rongxingzhileng.cn';
+    const rongxingMaster = 'https://www.rongxingzhileng.cn';
     const rongxing = 'http://www.coldrongxing.com/rongxing';
     /**
      * 项目展示
@@ -28,6 +28,18 @@ class ProjectController extends Controller
 
         //照片处理
         preg_match_all('/<img.*?src="(.*?)".*?>/is',$ProjectDetail->image,$array);
+        preg_match_all('/<video.*?src="(.*?)".*?>/is',$ProjectDetail->content,$video);
+
+        //视频的地址替换
+        if(!empty($video[1])){
+            $content = $ProjectDetail->content;
+            foreach ($video[1] as $key => $val){
+                $video_path = self::rongxingMaster.$val;
+                $content = str_replace($val,$video_path,$content);
+            }
+            $ProjectDetail->content = $content;
+        }
+
         $imsges = array_map(function($val){
             return self::rongxing.$val;
         },$array[1]);

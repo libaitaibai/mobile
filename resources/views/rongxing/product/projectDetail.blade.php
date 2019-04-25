@@ -57,9 +57,9 @@
     <ul class="nav">
         <li><a  href="{{ url('/index') }}">网站首页<i class="fa fa-chevron-right"></i></a></li>
 
-        <li><a  href="{{ url('/projects') }}">项目工程<i class="fa fa-chevron-right"></i></a></li>
+        <li><a  class="active" href="{{ url('/projects') }}">项目工程<i class="fa fa-chevron-right"></i></a></li>
 
-        <li><a  class="active" href="{{ url('/product') }}">产品展示<i class="fa fa-chevron-right"></i></a></li>
+        <li><a  href="{{ url('/product') }}">产品展示<i class="fa fa-chevron-right"></i></a></li>
 
         <li><a  href="{{ url('/honor') }}">荣誉资质<i class="fa fa-chevron-right"></i></a></li>
 
